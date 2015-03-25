@@ -14,6 +14,7 @@ public class Contact implements Serializable{
 
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private long id;
 
     @Column(name = "FIRST_NAME")
@@ -80,6 +81,6 @@ public class Contact implements Serializable{
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
-                '}';
+                '}'+"\n";
     }
 }

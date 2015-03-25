@@ -2,6 +2,7 @@ package com.Aleksandr.Service;
 
 import com.Aleksandr.entity.Contact;
 import com.Aleksandr.entity.Hobby;
+import com.Aleksandr.entity.Place;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,10 @@ public interface ContactService {
     public void deleteContact(Contact contact);
     public void addHobby(String description, String title);
     public Set<Hobby> getAllHobby();
-
+    public void addPlace(Place place);
+    public void deletePlace(Place place);
+    public Set<Place> getAllPlace();
+    public Set<Contact> getAllContacctsPlace(Place place);
 
 
 

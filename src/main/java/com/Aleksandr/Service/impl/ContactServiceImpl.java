@@ -3,8 +3,10 @@ package com.Aleksandr.Service.impl;
 import com.Aleksandr.Service.ContactService;
 import com.Aleksandr.dao.ContactDao;
 import com.Aleksandr.dao.HobbyDao;
+import com.Aleksandr.dao.PlaceDao;
 import com.Aleksandr.entity.Contact;
 import com.Aleksandr.entity.Hobby;
+import com.Aleksandr.entity.Place;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,8 @@ public class ContactServiceImpl implements ContactService {
     private ContactDao contactDao;
     @Autowired
     private HobbyDao hobbyDao;
+    @Autowired
+    private PlaceDao placeDao;
 
 
     @Override
@@ -54,6 +58,26 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public Set<Hobby> getAllHobby() {
         return hobbyDao.getHobbies();
+    }
+
+    @Override
+    public void addPlace(Place place) {
+        placeDao.addPlace(place);
+    }
+
+    @Override
+    public void deletePlace(Place place) {
+        placeDao.deletePlace(place);
+    }
+
+    @Override
+    public Set<Place> getAllPlace() {
+        return placeDao.getAllPlace();
+    }
+
+    @Override
+    public Set<Contact> getAllContacctsPlace(Place place) {
+        return placeDao.getAllContacctsPlace(place);
     }
 
 

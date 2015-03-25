@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by Aleksandr on 25.03.2015.
+ * Created by Aleksandr on 26.03.2015.
  */
 @Entity
-@Table(name = "HOBBY")
-public class Hobby implements Serializable {
+@Table(name = "PLACE")
+public class Place implements Serializable {
 
     @Id
     @Column(name = "ID")
@@ -18,6 +18,11 @@ public class Hobby implements Serializable {
     private String title;
     @Column(name = "DESCRIPTION")
     private String description;
+    @Column(name = "LONGITUDE")
+    private double longitude;
+    @Column(name = "LATITUDE")
+    private double latitude;
+
 
     public long getId() {
         return id;
@@ -37,13 +42,27 @@ public class Hobby implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    public double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+    public double getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
 
     @Override
     public String toString() {
-        return "Hobby{" +
+        return "Place{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
                 '}'+"\n";
     }
 }

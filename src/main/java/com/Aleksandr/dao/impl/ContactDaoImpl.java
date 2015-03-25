@@ -22,15 +22,13 @@ public class ContactDaoImpl implements ContactDao{
     @Override
     @Transactional
     public void addContact(Contact contact) {
-        sessionFactory.getCurrentSession().
-                saveOrUpdate(contact);
+        sessionFactory.getCurrentSession().saveOrUpdate(contact);
     }
 
     @Override
     @Transactional
     public List<Contact> contactList() {
-        return sessionFactory.getCurrentSession().
-                createQuery("from Contact").list();
+        return sessionFactory.getCurrentSession().createQuery("from Contact").list();
     }
 
     @Override
@@ -46,4 +44,6 @@ public class ContactDaoImpl implements ContactDao{
     public Set<Contact> getFriends(Contact contact) {
         return null;
     }
+
+
 }
