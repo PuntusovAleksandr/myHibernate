@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Hobby implements Serializable {
 
     @Id
-    @Column(name = "ID")
+    @Column
     private long id;
 
     @Column(name = "TITLE")
@@ -19,6 +19,15 @@ public class Hobby implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @ManyToOne(targetEntity = Contact.class)
+    private Contact contact;
+
+    public Contact getContact() {
+        return contact;
+    }
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
     public long getId() {
         return id;
     }
@@ -44,6 +53,7 @@ public class Hobby implements Serializable {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                '}'+"\n";
+                ", contact=" + contact +
+                '}';
     }
 }

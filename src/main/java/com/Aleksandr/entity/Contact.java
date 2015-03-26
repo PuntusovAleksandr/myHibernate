@@ -4,6 +4,7 @@ package com.Aleksandr.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Aleksandr on 25.03.2015.
@@ -14,7 +15,6 @@ public class Contact implements Serializable{
 
     @Id
     @Column(name = "id")
-    @GeneratedValue
     private long id;
 
     @Column(name = "FIRST_NAME")
@@ -23,6 +23,13 @@ public class Contact implements Serializable{
     private String lastName;
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
+
+    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+    private Set<Hobby> hobbies;
+    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+    private Set<Place> places;
+
+
 
     public long getId() {
         return id;

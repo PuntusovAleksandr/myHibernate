@@ -17,9 +17,9 @@ public class Message implements Serializable {
 
     @Column(name = "DATE_MESS")
     private Date date;
-    @Column(name = "CONTACT_FROM")
+    @Column(name = "CONTACTFROM")
     private Contact from;
-    @Column(name = "CONTACT_TO")
+    @Column(name = "CONTACTTO")
     private Contact to;
     @Column(name = "CONTENT")
     private String content;

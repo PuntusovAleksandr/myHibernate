@@ -33,6 +33,7 @@ public class PlaceDaoImpl implements PlaceDao{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     @Transactional
     public Set<Place> getAllPlace() {
         List<Place> placeList= sessionFactory.getCurrentSession().createQuery("from Place").list();
@@ -41,6 +42,7 @@ public class PlaceDaoImpl implements PlaceDao{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     @Transactional
     public Set<Contact> getAllContacctsPlace(Place place) {
         return null;
