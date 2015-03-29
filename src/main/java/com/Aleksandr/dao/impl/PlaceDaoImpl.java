@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,9 +38,12 @@ public class PlaceDaoImpl implements PlaceDao{
     @SuppressWarnings("unchecked")
     @Transactional
     public Set<Place> getAllPlace() {
-        List<Place> placeList= sessionFactory.getCurrentSession().createQuery("from Place").list();
-        Set<Place> plSet = (Set < Place >) placeList;
-        return plSet;
+        List<Place> plSet = sessionFactory.getCurrentSession().createQuery("from Place").list();
+        Set<Place> placeSet = new HashSet<Place>();
+        for (Place p :plSet){
+            placeSet.add(p);
+        }
+        return placeSet;
     }
 
     @Override

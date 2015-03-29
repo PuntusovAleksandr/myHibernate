@@ -28,7 +28,11 @@ public class ContactDaoImpl implements ContactDao{
     @Override
     @Transactional
     public List<Contact> contactList() {
-        return sessionFactory.getCurrentSession().createQuery("from Contact").list();
+//        return sessionFactory.getCurrentSession().createQuery("from Contact").list();
+        return sessionFactory.getCurrentSession().createSQLQuery(
+                "SELECT * FROM CONTACT"
+        ).list();
+
     }
 
     @Override

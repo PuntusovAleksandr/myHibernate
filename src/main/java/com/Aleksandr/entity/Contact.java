@@ -28,8 +28,28 @@ public class Contact implements Serializable{
     private Set<Hobby> hobbies;
     @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
     private Set<Place> places;
+    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+    private Set<Message> message;
 
 
+    public Set<Hobby> getHobbies() {
+        return hobbies;
+    }
+    public void setHobbies(Set<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
+    public Set<Place> getPlaces() {
+        return places;
+    }
+    public void setPlaces(Set<Place> places) {
+        this.places = places;
+    }
+    public Set<Message> getMessage() {
+        return message;
+    }
+    public void setMessage(Set<Message> message) {
+        this.message = message;
+    }
 
     public long getId() {
         return id;
@@ -70,7 +90,6 @@ public class Contact implements Serializable{
 
         return true;
     }
-
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
@@ -79,15 +98,12 @@ public class Contact implements Serializable{
         result = 31 * result + birthDate.hashCode();
         return result;
     }
-
-
     @Override
     public String toString() {
-        return "Contact{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+        return "Contact: id= " + id +
+                ", firstName='" + firstName +
+                ", lastName='" + lastName +
                 ", birthDate=" + birthDate +
-                '}'+"\n";
+                "\n";
     }
 }

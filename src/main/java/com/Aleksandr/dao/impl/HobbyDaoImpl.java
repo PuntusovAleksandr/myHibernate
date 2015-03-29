@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,8 +31,12 @@ public class HobbyDaoImpl implements HobbyDao {
     @SuppressWarnings("unchecked")
     @Transactional
     public Set<Hobby> getHobbies() {
-        List<Hobby> hobbyList= sessionFactory.getCurrentSession().createQuery("from Hobby").list();
-        return (Set<Hobby>) hobbyList;
+        List<Hobby> placeList = sessionFactory.getCurrentSession().createQuery("from Hobby").list();
+        Set<Hobby> hobbySet = new HashSet<Hobby>();
+        for (Hobby h : placeList ){
+            hobbySet.add(h);
+        }
+        return hobbySet;
     }
 
 
