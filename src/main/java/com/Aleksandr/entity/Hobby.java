@@ -2,6 +2,8 @@ package com.Aleksandr.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Aleksandr on 25.03.2015.
@@ -9,6 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "HOBBY")
 public class Hobby implements Serializable {
+
 
     @Id
     @Column
@@ -19,14 +22,14 @@ public class Hobby implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @ManyToOne(targetEntity = Contact.class)
-    private Contact contact;
+    @ManyToMany(mappedBy = "hobbies")
+    private Set<Contact> contacts = new HashSet<Contact>();
 
-    public Contact getContact() {
-        return contact;
+    public Set<Contact> getContacts() {
+        return contacts;
     }
-    public void setContact(Contact contact) {
-        this.contact = contact;
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
     }
     public long getId() {
         return id;
@@ -53,7 +56,7 @@ public class Hobby implements Serializable {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", contact=" + contact +
+                ", contacts=" + contacts +
                 '}';
     }
 }

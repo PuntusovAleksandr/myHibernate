@@ -2,6 +2,8 @@ package com.Aleksandr.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Aleksandr on 26.03.2015.
@@ -23,13 +25,13 @@ public class Place implements Serializable {
     @Column(name = "LATITUDE")
     private double latitude;
 
-    @ManyToOne(targetEntity = Contact.class)
-    private Contact contact;
+    @ManyToMany(mappedBy ="places")
+    private Set<Contact> contact = new HashSet<Contact>();
 
-    public Contact getContact() {
+    public Set<Contact> getContact() {
         return contact;
     }
-    public void setContact(Contact contact) {
+    public void setContact(Set<Contact> contact) {
         this.contact = contact;
     }
     public long getId() {

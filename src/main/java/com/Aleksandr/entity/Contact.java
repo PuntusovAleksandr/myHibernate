@@ -24,10 +24,17 @@ public class Contact implements Serializable{
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
-    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="CONTACT_HOBBY", joinColumns={@JoinColumn(referencedColumnName = "ID")}
+            , inverseJoinColumns={@JoinColumn(referencedColumnName="ID")})
     private Set<Hobby> hobbies;
-    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "CONTACT_PLACE", joinColumns = {@JoinColumn(referencedColumnName = "ID")}
+            , inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID")})
     private Set<Place> places;
+
     @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
     private Set<Message> message;
 
@@ -50,7 +57,6 @@ public class Contact implements Serializable{
     public void setMessage(Set<Message> message) {
         this.message = message;
     }
-
     public long getId() {
         return id;
     }
@@ -98,12 +104,17 @@ public class Contact implements Serializable{
         result = 31 * result + birthDate.hashCode();
         return result;
     }
+
     @Override
     public String toString() {
-        return "Contact: id= " + id +
-                ", firstName='" + firstName +
-                ", lastName='" + lastName +
+        return "Contact{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
-                "\n";
+                ", hobbies=" + hobbies +
+                ", places=" + places +
+                ", message=" + message +
+                '}';
     }
 }
