@@ -28,6 +28,13 @@ public class Place implements Serializable {
     @ManyToMany(mappedBy ="places")
     private Set<Contact> contact = new HashSet<Contact>();
 
+    public Place() {    }
+
+    public Place(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public Set<Contact> getContact() {
         return contact;
     }

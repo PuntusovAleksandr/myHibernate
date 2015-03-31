@@ -14,6 +14,7 @@ import java.util.Set;
 public class Contact implements Serializable{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
@@ -38,6 +39,16 @@ public class Contact implements Serializable{
     @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
     private Set<Message> message;
 
+    public Contact(){}
+
+    public Contact(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Contact(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public Set<Hobby> getHobbies() {
         return hobbies;
@@ -82,6 +93,8 @@ public class Contact implements Serializable{
         this.birthDate = birthDate;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,9 +125,6 @@ public class Contact implements Serializable{
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
-                ", hobbies=" + hobbies +
-                ", places=" + places +
-                ", message=" + message +
-                '}';
+                '}'+"\n";
     }
 }

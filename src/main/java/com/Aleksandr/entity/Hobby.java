@@ -2,7 +2,6 @@ package com.Aleksandr.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -23,7 +22,14 @@ public class Hobby implements Serializable {
     private String description;
 
     @ManyToMany(mappedBy = "hobbies")
-    private Set<Contact> contacts = new HashSet<Contact>();
+    private Set<Contact> contacts;
+
+    public Hobby() {}
+
+    public Hobby(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 
     public Set<Contact> getContacts() {
         return contacts;
@@ -56,7 +62,6 @@ public class Hobby implements Serializable {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", contacts=" + contacts +
                 '}';
     }
 }
