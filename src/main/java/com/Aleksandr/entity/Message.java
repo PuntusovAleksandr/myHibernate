@@ -12,6 +12,7 @@ import java.util.Date;
 public class Message implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
 

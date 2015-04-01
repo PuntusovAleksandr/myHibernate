@@ -13,6 +13,7 @@ import java.util.Set;
 public class Place implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
 

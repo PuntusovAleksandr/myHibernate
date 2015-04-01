@@ -1,6 +1,7 @@
 package com.Aleksandr.Service;
 
 import com.Aleksandr.dao.ContactDao;
+import com.Aleksandr.dao.PlaceDao;
 import com.Aleksandr.entity.Contact;
 import com.Aleksandr.entity.Hobby;
 import com.Aleksandr.entity.Place;
@@ -21,8 +22,10 @@ public class App {
         Contact contact2 = new Contact("Paul", "XXX" );
         Place placeNikopol = new Place("Nikopol", "Dnepropetrovsc obl");
         Place place = new Place();
+        Place place2 = new Place();
         Hobby hobby = new Hobby();
         Hobby hobbySwing = new Hobby("Swing", "Pool");
+        PlaceDao placeDao = context.getBean(PlaceDao.class);
         System.out.println("______________________________");
 
         contactDao.addContact(contact);
@@ -52,12 +55,26 @@ public class App {
         System.out.println(contactService.getAllContacctsPlace(place));
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         place.setTitle("Odessa");
+        place.setDescription("XXX");
         contactService.deletePlace(place);
         System.out.println(contactService.getAllPlace());
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         System.out.println(contactService.getAllContact());
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         System.out.println(contactService.getAllPlace());
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println(contactService.getAllHobby());
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println(contactService.getAllContacctsPlace(place));
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        placeDao.addPlace(place);
+        place2.setTitle("Two");
+        place2.setDescription("DesTwo");
+        System.out.println(contactService.getAllContacctsPlace(place));
+        System.out.println(contactService.getAllPlace());
+        placeDao.addPlace(place2);
+        System.out.println(contactService.getAllPlace());
+
 
 
     }
